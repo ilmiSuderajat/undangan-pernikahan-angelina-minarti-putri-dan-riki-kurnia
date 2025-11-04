@@ -455,8 +455,8 @@
                             '50%': { filter: 'sepia(0.9) contrast(1.3) brightness(1)' },
                         },
                         futuristic: {
-                            '0%, 100%': { filter: 'hue-rotate(180deg) saturate(1.3) brightness(1.2)' },
-                            '50%': { filter: 'hue-rotate(220deg) saturate(1.6) brightness(1.3)' },
+                            '0%, 100%': { filter: 'hue-rotate(180deg) saturate(1.2) brightness(1.1)' },
+                            '50%': { filter: 'hue-rotate(220deg) saturate(1.4) brightness(1.2)' },
                         },
                         vintage: {
                             '0%, 100%': { filter: 'sepia(0.5) contrast(1.1) brightness(0.95)' },
@@ -902,7 +902,8 @@
     
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="countdown/simplyCountdown.theme.default.css">
+    <!-- Perbaikan: Menggunakan CDN untuk simplyCountdown -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplycountdown.js@1.7.0/dist/simplyCountdown.theme.default.css" />
 
 </head>
 <style>
@@ -2115,7 +2116,7 @@
                 <h1 class="text-4xl sm:text-8xl font-judul tracking-wider leading-none animate-fade-in-up" style="animation-delay: 2s">Supe'i</h1>
                 <h1 class="text-4xl sm:text-6xl font-judul my-2 animate-fade-in-up" style="animation-delay: 0.4s">&</h1>
                 <h1 class="text-4xl sm:text-8xl font-judul tracking-wider leading-none mb-6 animate-fade-in-up" style="animation-delay: 0.6s">Apni</h1>
-                <p class="text-xl sm:text-3xl font-bold mb-8 font-awesome animate-fade-in-up" style="animation-delay: 2s">02.11.2025</p>
+                <p class="text-xl sm:text-3xl font-bold mb-8 font-awesome animate-fade-in-up" style="animation-delay: 2s">08.11.2025</p>
                 
                 <div class="yth mt-60 sm:mt-24 animate-fade-in-up" style="animation-delay: 1s">
                     <p class="text-sm font-light font-body">Kepada Yth:</p>
@@ -2248,7 +2249,9 @@
                     Siang dan malam berganti begitu cepat, di antara saat-saat mendebarkan yang belum pernah kami rasakan sebelumnya. Kami nantikan kehadiran para keluarga dan sahabat, untuk menjadi saksi ikrar janji suci kami di hari yang bahagia:
                 </p>
 
-                <div id="simply-countdown" class="simply-countdown flex justify-center items-center space-x-2 sm:space-x-4 mt-8 animate-fade-in-up" data-aos="fade-up" data-aos-delay="400">
+                <!-- Perbaikan: Elemen countdown dengan struktur yang benar -->
+                <div id="simply-countdown" class="flex justify-center items-center space-x-2 sm:space-x-4 mt-8 animate-fade-in-up" data-aos="fade-up" data-aos-delay="400">
+                    <!-- Elemen countdown akan diisi oleh JavaScript -->
                 </div>
 
                 <div class="mt-8 animate-fade-in-up" data-aos="fade-up" data-aos-delay="600">
@@ -2439,7 +2442,8 @@
         });
     </script>
 
-    <script src="countdown/simplyCountdown.min.js"></script>
+    <!-- Perbaikan: Menggunakan CDN untuk simplyCountdown -->
+    <script src="https://cdn.jsdelivr.net/npm/simplycountdown.js@1.7.0/dist/simplyCountdown.min.js"></script>
     
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
@@ -2820,30 +2824,34 @@
 
 
             // 🚨 PERBAIKAN: INISIALISASI SIMPLY COUNTDOWN 🚨
-            simplyCountdown('#simply-countdown', {
-                year: 2025, // Tahun Acara
-                month: 11,  // Bulan Acara (11 = November)
-                day: 8,     // Tanggal Acara
-                hours: 9,   // Jam Acara (09:00 WIB)
-                minutes: 0,
-                seconds: 0,
-                enableUtc: false, // Jika diatur false, menggunakan waktu lokal (lebih mudah)
-                refresh: 1000,
-                wordClass: 'simply-word',
-                amountClass: 'simply-amount',
-                separatorClass: 'simply-separator',
-                sectionClass: 'simply-section',
-                sectionTag: 'div',
-                // Custom words agar sesuai dengan Bahasa Indonesia
-                labels: {
-                    days: 'Hari',
-                    hours: 'Jam',
-                    minutes: 'Menit',
-                    seconds: 'Detik',
-                    // Label jamak (plural) jika perlu, tapi biasanya ini cukup
-                    plural: false
-                }
-            });
+            // Pastikan elemen countdown ada
+            const countdownElement = document.getElementById('simply-countdown');
+            if (countdownElement) {
+                simplyCountdown('#simply-countdown', {
+                    year: 2025, // Tahun Acara
+                    month: 11,  // Bulan Acara (11 = November)
+                    day: 8,     // Tanggal Acara
+                    hours: 9,   // Jam Acara (09:00 WIB)
+                    minutes: 0,
+                    seconds: 0,
+                    enableUtc: false, // Jika diatur false, menggunakan waktu lokal (lebih mudah)
+                    refresh: 1000,
+                    wordClass: 'simply-word',
+                    amountClass: 'simply-amount',
+                    separatorClass: 'simply-separator',
+                    sectionClass: 'simply-section',
+                    sectionTag: 'div',
+                    // Custom words agar sesuai dengan Bahasa Indonesia
+                    labels: {
+                        days: 'Hari',
+                        hours: 'Jam',
+                        minutes: 'Menit',
+                        seconds: 'Detik',
+                        // Label jamak (plural) jika perlu, tapi biasanya ini cukup
+                        plural: false
+                    }
+                });
+            }
 
 
             // ⛔ SAVE TO CALENDAR LINK
@@ -2854,10 +2862,10 @@
                 const description = 'Kami mengundang Bapak/Ibu/Saudara/i untuk menjadi saksi ikrar janji suci kami.';
                 const location = 'Kp/Ds Pagenjahan RT.004/RW.003 Kec.Kronjo Tangerang-Banten';
                 
-                // Tanggal: 02 November 2025, Jam: 09:00 WIB
+                // Tanggal: 08 November 2025, Jam: 09:00 WIB
                 // Gunakan format UTC untuk kompatibilitas, 09:00 WIB = 02:00 UTC (GMT+7)
-                const startDate = '20251102T020000Z'; 
-                const endDate = '20251102T050000Z'; // Durasi 3 jam
+                const startDate = '20251108T020000Z'; 
+                const endDate = '20251108T050000Z'; // Durasi 3 jam
 
                 // URL untuk Google Calendar
                 const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(description)}&location=${encodeURIComponent(location)}`;
@@ -3179,7 +3187,7 @@
         document.querySelectorAll('.classic').forEach(element => {
             setInterval(() => {
                 element.style.filter = `grayscale(${Math.random() * 0.2 + 0.2}) contrast(${Math.random() * 0.1 + 1.05})`;
-            }, 3500);
+            }, 3000);
         });
         
         // Efek contemporary
